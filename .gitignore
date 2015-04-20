@@ -1,0 +1,9 @@
+node_modules/*
+demo/*
+!demo/*.html
+.idea/
+jspm_packages/
+dist/
+demo/
+*-compiled.js
+*-compiled.js.map
