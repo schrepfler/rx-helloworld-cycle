@@ -36,3 +36,4 @@ Thoughts
 
 TODO
 -----
+ES6-ise the code, probably some flag needed to be passed to the bosonic transpiler or they don't support ES6 yet, in that case raise a feature request on their issue tracker.
