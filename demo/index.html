@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Helloworld! Web Component based on Cycle.js</title>
+    <meta charset="utf-8">
+    <script src="js/bosonic-polyfills.js"></script>
+    <script src="js/rx-helloworld-cycle.js"></script>
+    <link href="css/rx-helloworld-cycle.css" rel="stylesheet">
+</head>
+<body>
+    <rx-helloworld-cycle></rx-helloworld-cycle>
+    <script type="text/javascript">
+        window.addEventListener('WebComponentsReady', function() {
+            var hello = document.querySelector('rx-helloworld-cycle');
+            hello.sayHello();
+        });
+    </script>
+</body>
