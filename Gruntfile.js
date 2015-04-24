@@ -11,8 +11,8 @@ module.exports = function(grunt) {
     bosonic: {
       components: {
         src: ['src/*.html'],
-        css: 'dist/rx-betslip.css',
-        js:  'dist/rx-betslip.js'
+        css: 'dist/rx-helloworld-cycle.css',
+        js:  'dist/rx-helloworld-cycle.js'
       }
     },
 

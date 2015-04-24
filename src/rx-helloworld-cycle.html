@@ -1,0 +1,41 @@
+<element name="rx-helloworld-cycle">
+    <style>
+
+    </style>
+    <template>
+        <div class="helloworld"></div>
+    </template>
+    <script>
+        ({
+            createdCallback: function () {
+                this.appendChild(this.template.content.cloneNode(true));
+            },
+            sayHello: function () {
+                var name$ = Cycle.createStream(function model(changeName$) {
+                    return changeName$.startWith('');
+                });
+                var vtree$ = Cycle.createStream(function view(name$) {
+                    return name$.map(function (name) {
+                        return Cycle.h('div', [
+                            Cycle.h('label', 'Name:'),
+                            Cycle.h('input.field', {attributes: {type: 'text'}}),
+                            Cycle.h('h1.header', 'Hello ' + name)
+                        ])
+                    });
+                });
+                var interaction$ = Cycle.createStream(function user(vtree$) {
+                    console.log();
+                    return Cycle.render(vtree$, ".helloworld").interaction$;
+                });
+                var changeName$ = Cycle.createStream(function intent(interaction$) {
+                    return interaction$.choose('.field', 'input').map(function (ev) {
+                        return ev.target.value
+                    });
+                });
+                name$.inject(changeName$).inject(interaction$).inject(vtree$).inject(name$);
+            }
+
+        });
+    </script>
+    <script src="./../node_modules/cyclejs/dist/cycle.js"></script>
+</element>
